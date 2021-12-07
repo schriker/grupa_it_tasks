@@ -1,9 +1,9 @@
 # Zadania rekrutacyjne
 
-[Zadanie 1](https://schriker.github.io/grupa_it_tasks/Task_1/)
+[Zadanie 1](https://schriker.github.io/grupa_it_tasks/task_1/)
 
-[Zadanie 2](https://schriker.github.io/grupa_it_tasks/Task_2/dist/)
+[Zadanie 2](https://schriker.github.io/grupa_it_tasks/task_2/dist/)
 
-[Zadanie 3](https://schriker.github.io/grupa_it_tasks/Task_3/)
+[Zadanie 3](https://schriker.github.io/grupa_it_tasks/task_3/)
 
-[Zadanie 4](https://schriker.github.io/grupa_it_tasks/Task_4/)
+[Zadanie 4](https://schriker.github.io/grupa_it_tasks/task_4/)
