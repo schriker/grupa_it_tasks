@@ -2,10 +2,6 @@ import * as yup from 'yup';
 import { renderBook, saveBookToLocalStorage } from './books';
 
 const form = document.querySelector('form');
-const title = document.querySelector('#title');
-const author = document.querySelector('#author');
-const priority = document.querySelector('input[name="priority"]:checked');
-const category = document.querySelector('#category');
 
 const schema = yup.object().shape({
   title: yup.string().required('Tytuł jest wymagany.'),
@@ -31,10 +27,10 @@ function handleValidationError(err) {
 
 function clearForm() {
   clearErrors();
-  title.value = '';
-  author.value = '';
-  priority.checked = false;
-  category.value = '';
+  document.querySelector('#title').value = '';
+  document.querySelector('#author').value = '';
+  document.querySelector('input[name="priority"]:checked').checked = false;
+  document.querySelector('#category').value = '';
 }
 
 export function initForm() {
@@ -42,10 +38,10 @@ export function initForm() {
     e.preventDefault();
 
     const book = {
-      title: title.value,
-      author: author.value,
-      priority: priority?.value,
-      category: category.value,
+      title: document.querySelector('#title').value,
+      author: document.querySelector('#author').value,
+      priority: document.querySelector('input[name="priority"]:checked')?.value,
+      category: document.querySelector('#category').value,
     };
 
     schema.validate(book)
