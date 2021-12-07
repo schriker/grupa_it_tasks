@@ -1,2 +1,56 @@
+.row {
+  display: flex;
+  padding: 5px 0;
+}
+
+.options {
+  display: flex;
+}
+
+.radio {
+  display: flex;
+}
+
+label,
+.row > div:first-child {
+  width: 100px;
+}
+
+input[type='submit'] {
+  margin: 10px 0 0 0;
+  border: 0;
+  display: block;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  transition: all ease 0.2s;
+  background-color: deepskyblue;
+}
+
+input[type='submit']:hover {
+  background-color: lightskyblue;
+}
+
+table {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px 0;
+}
+
+tr {
+  border-bottom: 1px solid grey;
+}
+
+.errors {
+  padding: 10px 20px;
+  margin: 10px 0 0 0;
+  background-color: tomato;
+}
 
 /*# sourceMappingURL=index.af814d91.css.map */

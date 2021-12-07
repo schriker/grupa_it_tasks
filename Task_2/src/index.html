@@ -11,7 +11,64 @@
 </head>
 
 <body>
-  
+  <form>
+    <div class="row">
+      <label for="title">Tytuł:</label>
+      <input type="text" name="title" id="title" />
+    </div>
+    <div class="row">
+      <label for="author">Autor:</label>
+      <input type="text" name="author" id="author" />
+    </div>
+    <div class="row">
+      <div>
+        Priorytet:
+      </div>
+      <div class="options">
+        <div>
+          <input type="radio" name="priority" id="1" value="1" />
+          <label for="1">1</label>
+        </div>
+        <div>
+          <input type="radio" name="priority" id="2" value="2" />
+          <label for="2">2</label>
+        </div>
+        <div>
+          <input type="radio" name="priority" id="3" value="3" />
+          <label for="3">3</label>
+        </div>
+        <div>
+          <input type="radio" name="priority" id="4" value="4" />
+          <label for="4">4</label>
+        </div>
+        <div>
+          <input type="radio" name="priority" id="5" value="5" />
+          <label for="5">5</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <label for="category">Kategoria:</label>
+      <select name="category" id="category">
+        <option disabled selected value> -- Wybierz Kategorie -- </option>
+        <option value="Fantasy">Fantasy</option>
+        <option value="Horror">Horror</option>
+        <option value="Kryminał">Kryminał</option>
+      </select>
+    </div>
+    <input type="submit" value="Zapisz" />
+  </form>
+  <table>
+    <thead>
+      <tr>
+        <th>Tytuł</th>
+        <th>Autor</th>
+        <th>Priorytet</th>
+        <th>Kategoria</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 </body>
 
 </html>
