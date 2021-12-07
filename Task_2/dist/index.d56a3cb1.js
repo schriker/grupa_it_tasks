@@ -462,32 +462,20 @@ function hmrAcceptRun(bundle, id) {
 var _books = require("./books");
 var _form = require("./form");
 _books.loadBooksFromLocalStorage();
-document.querySelector('form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const book = {
-        title: document.querySelector('#title').value,
-        author: document.querySelector('#author').value,
-        priority: document.querySelector('input[name="priority"]:checked')?.value,
-        category: document.querySelector('#category').value
-    };
-    _form.schema.validate(book).then(function() {
-        _books.renderBook(book);
-        _books.saveBookToLocalStorage();
-        _form.clearForm();
-    }).catch(_form.handleValidationError);
-});
+_form.initForm();
 
 },{"./form":"6Qgc2","./books":"1mct9"}],"6Qgc2":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "schema", ()=>schema
-);
-parcelHelpers.export(exports, "handleValidationError", ()=>handleValidationError
-);
-parcelHelpers.export(exports, "clearForm", ()=>clearForm
+parcelHelpers.export(exports, "initForm", ()=>initForm
 );
 var _yup = require("yup");
+var _books = require("./books");
 const form = document.querySelector('form');
+const title = document.querySelector('#title');
+const author = document.querySelector('#author');
+const priority = document.querySelector('input[name="priority"]:checked');
+const category = document.querySelector('#category');
 const schema = _yup.object().shape({
     title: _yup.string().required('Tytuł jest wymagany.'),
     author: _yup.string().required('Autor jest wymagany.').min(3, 'Autor min. 3 znaki.'),
@@ -507,13 +495,29 @@ function handleValidationError(err) {
 }
 function clearForm() {
     clearErrors();
-    document.querySelector('#title').value = '';
-    document.querySelector('#author').value = '';
-    document.querySelector('input[name="priority"]:checked').checked = false;
-    document.querySelector('#category').value = '';
+    title.value = '';
+    author.value = '';
+    priority.checked = false;
+    category.value = '';
+}
+function initForm() {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const book = {
+            title: title.value,
+            author: author.value,
+            priority: priority?.value,
+            category: category.value
+        };
+        schema.validate(book).then(function() {
+            _books.renderBook(book);
+            _books.saveBookToLocalStorage();
+            clearForm();
+        }).catch(handleValidationError);
+    });
 }
 
-},{"yup":"gvf4u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"gvf4u":[function(require,module,exports) {
+},{"yup":"gvf4u","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./books":"1mct9"}],"gvf4u":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "mixed", ()=>_mixed.create

@@ -1,8 +1,13 @@
 import * as yup from 'yup';
+import { renderBook, saveBookToLocalStorage } from './books';
 
 const form = document.querySelector('form');
+const title = document.querySelector('#title');
+const author = document.querySelector('#author');
+const priority = document.querySelector('input[name="priority"]:checked');
+const category = document.querySelector('#category');
 
-export const schema = yup.object().shape({
+const schema = yup.object().shape({
   title: yup.string().required('Tytuł jest wymagany.'),
   author: yup.string().required('Autor jest wymagany.').min(3, 'Autor min. 3 znaki.'),
   priority: yup.number('Priorytet jest wymagany.').required('Priorytet jest wymagany.').min(1).max(5),
@@ -16,7 +21,7 @@ function clearErrors() {
   }
 }
 
-export function handleValidationError(err) {
+function handleValidationError(err) {
   clearErrors();
   const errors = document.createElement('div');
   errors.classList = 'errors';
@@ -24,10 +29,31 @@ export function handleValidationError(err) {
   form.appendChild(errors);
 }
 
-export function clearForm() {
+function clearForm() {
   clearErrors();
-  document.querySelector('#title').value = '';
-  document.querySelector('#author').value = '';
-  document.querySelector('input[name="priority"]:checked').checked = false;
-  document.querySelector('#category').value = '';
+  title.value = '';
+  author.value = '';
+  priority.checked = false;
+  category.value = '';
+}
+
+export function initForm() {
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const book = {
+      title: title.value,
+      author: author.value,
+      priority: priority?.value,
+      category: category.value,
+    };
+
+    schema.validate(book)
+      .then(function () {
+        renderBook(book);
+        saveBookToLocalStorage();
+        clearForm();
+      })
+      .catch(handleValidationError);
+  });
 }
