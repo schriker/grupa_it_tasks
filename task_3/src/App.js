@@ -4,11 +4,11 @@ import Quote from './components/Quote';
 
 function App() {
   const [data] = useApi();
-  const [prevIndex, setPrevIndex] = useState();
-  const [currentIndex, setCurrentIndex] = useState();
+  const [prevIndex, setPrevIndex] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(null);
 
   const getRandomQuote = () => {
-    const randomIndex = Math.floor((Math.random() * data.length) + 1);
+    const randomIndex = Math.floor((Math.random() * data.length));
     setCurrentIndex(randomIndex);
     setPrevIndex(currentIndex);
   };
@@ -22,13 +22,15 @@ function App() {
 
   useEffect(() => {
     if (data.length) {
-      setCurrentIndex(() => Math.floor((Math.random() * data.length) + 1));
+      setCurrentIndex(() => Math.floor((Math.random() * data.length)));
     }
   }, [data]);
 
+  console.log(currentIndex, prevIndex);
+
   return (
     <div>
-      {currentIndex ? <Quote data={data[currentIndex]} /> : 'Ładowanie...'}
+      {currentIndex ? <Quote data={data[currentIndex]} /> : <p>Ładowanie...</p>}
       {prevIndex && <button onClick={getPrevQuote}>Poprzedni</button>}
       <button onClick={getRandomQuote}>Losuj</button>
     </div>
