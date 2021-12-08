@@ -5,15 +5,12 @@ function useApi() {
 
   useEffect(() => {
     const fetchData = async () => {
-
       try {
         const result = await (await fetch(process.env.REACT_APP_API_URL)).json();
-
         setData(result);
       } catch (error) {
         console.log(error);
       }
-
     };
 
     fetchData();
