@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import useApi from './hooks/useApi';
+import Quote from './components/Quote';
 
 function App() {
   const [data] = useApi();
@@ -25,12 +26,11 @@ function App() {
     }
   }, [data]);
 
-
   return (
     <div>
-      {currentIndex ? data[currentIndex].quote : 'Ładowanie...'}
+      {currentIndex ? <Quote data={data[currentIndex]} /> : 'Ładowanie...'}
+      {prevIndex && <button onClick={getPrevQuote}>Poprzedni</button>}
       <button onClick={getRandomQuote}>Losuj</button>
-      <button onClick={getPrevQuote}>Poprzedni</button>
     </div>
   );
 }
