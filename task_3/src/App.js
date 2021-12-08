@@ -28,8 +28,8 @@ function App() {
 
   return (
     <div>
-      {currentIndex ? <Quote data={data[currentIndex]} /> : <p>Ładowanie...</p>}
-      {prevIndex && <button onClick={getPrevQuote}>Poprzedni</button>}
+      {currentIndex !== null ? <Quote data={data[currentIndex]} /> : <p>Ładowanie...</p>}
+      {prevIndex !== null && <button onClick={getPrevQuote}>Poprzedni</button>}
       <button onClick={getRandomQuote}>Losuj</button>
     </div>
   );
