@@ -26,8 +26,6 @@ function App() {
     }
   }, [data]);
 
-  console.log(currentIndex, prevIndex);
-
   return (
     <div>
       {currentIndex ? <Quote data={data[currentIndex]} /> : <p>Ładowanie...</p>}
